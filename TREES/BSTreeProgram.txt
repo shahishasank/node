@@ -1,0 +1,158 @@
+#include <iostream>
+
+using namespace std;
+struct node
+{
+    int data;
+    struct node *left;
+    struct node *right;
+}*root,*temp=NULL;
+void Search(struct node *root);
+void Insertion()
+{
+    temp=new node;
+    int item;
+    cout<<"\nEnter Element u want to insert in BST:";
+    cin>>item;
+    temp->data=item;
+    temp->left=NULL;
+    temp->right=NULL;
+
+    if(root==NULL)
+    {
+        root=temp;
+        return;
+
+    }
+    else
+    {
+        Search(root);
+
+    }
+}
+
+void Search(struct node *root)
+{
+    if((temp->data<root->data)&&(root->left==NULL))
+    {
+        root->left=temp;
+
+    }
+    else if((temp->data>root->data)&&(root->right==NULL))
+    {
+        root->right=temp;
+
+
+    }
+    else if((temp->data<root->data)&&(root->left!=NULL))
+    {
+        Search(root->left);
+    }
+    else if((temp->data>root->data)&&(root->right!=NULL))
+    {
+        Search(root->right);
+    }
+
+}
+
+void Deletion()
+{
+
+}
+
+
+void InOrder(struct node *root)
+{
+    if(root!=NULL)
+    {
+
+        InOrder(root->left);
+        cout<<"\n"<<root->data;
+
+        InOrder(root->right);
+
+    }
+}
+
+void PreOrder(struct node *root)
+{
+    if(root!=NULL)
+    {
+        cout<<"\n"<<root->data;
+
+        PreOrder(root->left);
+        PreOrder(root->right);
+
+    }
+
+}
+
+void PostOrder(struct node *root)
+{
+    if(root!=NULL)
+    {
+
+        PostOrder(root->left);
+        PostOrder(root->right);
+        cout<<"\n"<<root->data;
+
+    }
+}
+
+
+
+int main()
+{
+    while(1)
+    {
+
+
+        int choice;
+        cout << "\n----------------Menu---------";
+        cout<<"\n1.Insert";
+        cout<<"\n2.Delete";
+        cout<<"\n3.InOrder Traversal";
+        cout<<"\n4.PreOrder Traversal";
+        cout<<"\n5.PostOrder Traversal";
+        cout<<"\nEnter Your Choice:";
+        cin>>choice;
+        switch(choice)
+        {
+        case 1:
+        {
+            Insertion();
+            break;
+        }
+        case 2:
+        {
+            int ele;
+            cout<<"\nEnter Element u want to delete
+            
+
+            Deletion();
+            break;
+        }
+        case 3:
+        {
+            InOrder(root);
+            break;
+        }
+        case 4:
+        {
+            PreOrder(root);
+            break;
+        }
+        case 5:
+        {
+            PostOrder(root);
+            break;
+
+            default:
+            {
+                cout<<"plz make a valid choice.";
+            }
+        }
+
+        }
+    }
+}

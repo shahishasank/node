@@ -1,0 +1,334 @@
+
+
+
+
+
+
+Combine Array Merge 
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+ int arr[50],arr1[50],arr3[100],n1,n2,i,j,k=0;
+ cout<<"enter size of 1st array";
+ cin>>n1;
+ cout<<"enter element of array";
+ for(i=0;i<n1;i++)
+{
+    cin>>arr[i];
+}
+cout<<"enter size of 2nd array";
+cin>>n2;
+cout<<"enter element of array";
+for(j=0;j<n2;j++)
+{
+    cin>>arr1[j];
+}
+
+
+i=0,j=0;
+while(i<n1 && j<n2)
+{
+    if(arr[i]<arr1[j])
+    {
+        arr3[k]=arr[i];
+        k++;
+        i++;
+    }
+    else
+    {
+        arr3[k]=arr1[j];
+        k++;
+        j++;
+    }
+}
+    while(i<n1)
+    {
+       arr3[k]=arr[i];
+       i++;
+    }
+    while(j<n2)
+    {
+        arr3[k]=arr1[j];
+        j++;
+    }
+cout<<"\nsorted element are";
+        for(k=0;k<(n1+n2);k++)
+        {
+            cout<<arr3[k]<<" ";
+        }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+Insert element into array & delete 
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+int main()
+{
+    int i,arr[20],arrSize;
+     cout<<"Enter the size of Array--";
+   cin>>arrSize;
+   cout<<"Enter the  Array Elements--";
+   for(i=0;i<arrSize;i++)
+   {
+
+     cin>>arr[i];
+   }
+     for(int i=0; i<arrSize;i++)
+     {
+         cout<<"Array Elements Are :-  "<<arr[i]<<endl;
+     }
+     int in , ps,d ;
+     cout<<"Enter Element Of Array :-  ";
+     cin>>in;
+     cout<<"At Which Position Of Array :-  ";
+     cin>>ps;
+     for(int i=arrSize-1; i>=(ps-1); i--)
+     {
+         arr[i+1]=arr[i];
+     }
+     arr[ps]=in;
+     cout<<"Element Inserted Successfully...!!!\n ";
+     for(int i=0; i<=arrSize ;i++)
+     {
+         cout<<arr[i]<<" ";
+         cout<<"\n";
+     }
+     cout<<"Enter the position which you want to delete :-  " ;
+     cin>>d;
+     for(int i=d; i<arrSize;i++)
+     {
+         arr[i]=arr[i+1];
+     }
+     cout<<"New array element is :-  ";
+     for(int i=0; i<arrSize;i++)
+     {
+         cout<<arr[i];
+         cout<<"\n";
+
+     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+merge 2 Array
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+
+	int arr1[50], arr2[50], n, m, o, i, j, k, arr3[100];
+	cout<<"Enter Array 1 Size : ";
+	cin>>n;
+	cout<<"Enter Array 1 Elements : ";
+	for(i=0; i<n; i++)
+	{
+		cin>>arr1[i];
+	}
+	cout<<"Enter Array 2 Size : ";
+	cin>>m;
+	cout<<"Enter Array 2 Elements : ";
+	for(j=0; j<m; j++)
+	{
+		cin>>arr2[j];
+	}
+
+
+	while(i<n && j<m)
+    {
+        if(arr1[i]<arr2[j])
+        {
+            arr3[k]=arr1[i];
+            k++;
+            i++;
+        }
+        else
+        {
+          arr3[k]=arr2[j];
+            j++;
+            k++;
+        }
+    }
+    while(i<n)
+    {
+      arr3[k]=arr1[i];
+            i++;
+    }
+    while(j<m)
+    {
+      arr3[k]=arr2[j];
+      j++;
+    }
+
+	cout<<"Now the new array after merging is :\n";
+	for(k=0; k<o; k++)
+	{
+		cout<<arr3[k];
+	}
+}
+
+
+
+
+
+
+
+
+
+
+odd selection 
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   int i,arr[10],nValue,arrSize,even=0,odd=0;
+   cout<<"Enter the size of Array--";
+   cin>>arrSize;
+   cout<<"Enter the  Array Elements--";
+   for(i=0;i<arrSize;i++)
+   {
+
+     cin>>arr[i];
+   }
+
+     for(i=0;i<arrSize;i++)
+   {
+       if(arr[i]%2==0)
+       {
+           even++;
+       }
+       else
+       {
+           odd++;
+       }
+   }
+   cout<<"Enter value to insert in array--";
+   cin>>nValue;
+   for(i=arrSize;i>=odd-1;i--)
+   {
+       arr[i+1]=arr[i];
+   }
+   arr[odd-1]=nValue;
+
+ if(odd==0)
+ {
+
+      for(i=arrSize;i>=odd;i--)
+      {
+
+   arr[i+1]=arr[i];
+   break;
+
+      }
+       arr[0]=nValue;
+     }
+      if(odd==arrSize)
+      {
+          for(i=arrSize;i>=odd;i--)
+          {
+
+arr[i-1]=arr[i];
+   break;
+   }
+   arr[i]=nValue;
+
+      }
+
+    for(i=0;i<arrSize+1;i++)
+   {
+
+     cout<<arr[i];
+     cout<<"\n";
+   }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

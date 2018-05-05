@@ -1,0 +1,113 @@
+#include<iostream>
+using namespace std;
+int n=0,ptr,par,leftt,righttt,last,item,temp;
+int tree[20];
+void insheap(int item)
+{
+    n=n+1;
+    ptr=n;
+    while(ptr>1)
+    {
+        par=ptr/2;
+        if(item<tree[par])
+        {
+            tree[ptr]=item;
+            return ;
+        }
+        tree[ptr]=tree[par];
+        ptr=par;
+    }
+    tree[1]=item;
+    return;
+}
+
+void delheap()
+{
+    item=tree[1];
+    last=tree[n];
+    n=n-1;
+    ptr=1;
+    leftt=2;
+    righttt=3;
+    while(righttt<=n)
+    {
+        if(last>=tree[leftt]&&last>=tree[righttt])
+        {
+            tree[ptr]=last;
+            return;
+
+
+        }
+        if(tree[righttt]<=tree[leftt])
+        {
+            temp=last;
+            last=tree[leftt];
+            tree[leftt]=temp;
+            ptr=leftt;
+        }
+        else{
+                temp=last;
+            last=tree[righttt];
+            tree[righttt] = temp;
+            ptr=righttt;
+        }
+        leftt=2*ptr;
+        righttt=leftt+1;
+    }
+    if(leftt==n)
+    {
+        if(last<tree[leftt])
+        {
+        ptr=leftt;
+        }
+
+}
+tree[ptr]=last;
+cout<<"node delete"<<endl;
+return;
+}
+
+void traverse()
+{
+    int i;
+    for(i=1;i<=n;i++)
+    {
+        cout<<tree[i]<<endl;
+    }
+}
+
+
+int main()
+{
+    int x;
+   while(1)
+   {
+
+
+    {
+        cout<<"\nEnter 1 for insert"<<endl;
+        cout<<"\n2 for deletion"<<endl;
+        cout<<"\n3 for traverse"<<endl;
+        cin>>x;
+        switch(x)
+        {
+            case 1:cout<<"\nEnter the element to insert"<<endl;
+            cin>>item;
+            insheap(item);
+            break;
+            case 2:delheap();
+            break;
+            case 3:traverse();
+            break;
+
+        }
+
+
+
+    }
+   }
+
+    return 0;
+
+}
+

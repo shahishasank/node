@@ -1,0 +1,133 @@
+//Implementation of Priority Queue Using Linked list..
+
+#include <iostream>
+
+using namespace std;
+
+struct node
+{
+    int priority;
+    int info;
+    struct node *link;
+}*frnt=NULL;
+
+void Insert(int item)
+{
+    struct node *tmp,*q;
+    tmp=new node;
+    int item_priority;
+
+    cout<<"\nENTER its priority:";
+
+    cin>>item_priority;
+    tmp->info=item;
+    tmp->priority=item_priority;
+
+
+
+    if(frnt==NULL || item_priority < frnt->priority)
+    {
+        tmp->link=frnt;
+        frnt=tmp;
+    }
+    else
+    {
+
+       q=frnt;
+       while(q->link!=NULL && q->link->priority<=item_priority)
+       {
+           q=q->link;
+       }
+
+       tmp->link=q->link;
+       q->link=tmp;
+
+    }
+}
+
+void Delete()
+{
+    struct node *tmp=new node;
+
+    if(frnt==NULL)
+    {
+        cout<<"Queue Overflow";
+
+    }
+    else{
+      tmp=frnt;
+
+ cout<<"\nDeleted data is"<<tmp->info;
+ frnt=frnt->link;
+ delete(tmp);
+
+
+
+    }
+}
+
+void display()
+{
+    struct node *ptr;
+ptr=frnt;
+    if(frnt==NULL)
+    {
+        cout<<"Queue is empty";
+    }
+    else{
+
+        cout<<"\n---------------------Queue----------\n";
+         cout<<"priority\tData\n\n";
+         while(ptr!=NULL)
+         {
+              cout<<ptr->priority<<"\t\t"<<ptr->info<<"\n";
+              ptr=ptr->link;
+         }
+    }
+
+}
+
+
+
+
+int main()
+{
+    while(1)
+    {
+
+
+    int choice,item;
+    cout <<"\n----------Menu--------";
+    cout<<"\n1.PUSH";
+    cout<<"\n2.POP";
+    cout<<"\n3.DISPLAY";
+    cout<<"\nENTER YOUR CHOICE:";
+
+    cin>>choice;
+    switch(choice)
+    {
+    case 1:
+        {
+            cout<<"\nEnter element you want to push:";
+            cin>>item;
+            Insert(item);
+            break;
+        }
+    case 2:
+        {
+            Delete();
+            break;
+        }
+        case 3:
+        {
+            display();
+            break;
+        }
+    default:
+        {
+            cout<<"plz....Enter right choice;";
+        }
+    }
+    }
+
+}
